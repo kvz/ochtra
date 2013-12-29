@@ -62,7 +62,7 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   elif [ "${ext}" = "py" ] || [ "${she}" = "python" ]; then
     cmd="pylint - >/dev/null"
   elif [ "${ext}" = "go" ]; then
-    cmd="gofmt -e >/dev/null"
+    cmd="gofmt -e"
   elif [ "${she}" = "bash" ]; then
     cmd="bash -n >/dev/null"
   elif [ "${she}" = "sh" ]; then
