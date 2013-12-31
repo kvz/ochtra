@@ -28,6 +28,7 @@ function paint() (
   green=$'s,.*,\x1B[32m&\x1B[m,'
   red=$'s,.*,\x1B[31m&\x1B[m,'
   gray=$'s,.*,\x1B[37m&\x1B[m,'
+  purge="/.*/d"
 
   stdout="${!1}"
   stderr="${!2}"
@@ -44,13 +45,13 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   ext="${pth##*.}"
 
   she="$(git cat-file -p ${sha} |head -n1 |awk -F/ '/^#\!/ {print $NF}' |sed 's/^env //g')"
-  out="green"
+  out="purge"
   err="red"
   cmd=""
 
   # Select linting tool based on extension or shebang
   if [ "${ext}" = "rb" ] || [ "${ext}" = "erb" ] || [ "${she}" = "ruby" ]; then
-    cmd="ruby -c - >/dev/null"
+    cmd="ruby -c -"
   elif [ "${ext}" = "js" ] || [ "${she}" = "node" ]; then
     # jshint unfortunately uses STDOUT for errors, so paint all red
     cmd="jshint -"
@@ -60,17 +61,17 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     cmd="coffeelint --stdin"
     out="red"
   elif [ "${ext}" = "py" ] || [ "${she}" = "python" ]; then
-    cmd="pylint - >/dev/null"
+    cmd="pylint -"
   elif [ "${ext}" = "go" ]; then
     cmd="gofmt -e"
   elif [ "${she}" = "bash" ]; then
-    cmd="bash -n >/dev/null"
+    cmd="bash -n"
   elif [ "${she}" = "sh" ]; then
-    cmd="sh -n >/dev/null"
+    cmd="sh -n"
   elif [ "${ext}" = "php" ] || [ "${ext}" = "ctp" ] || [ "${she}" = "php" ]; then
-    cmd="php -n -l -ddisplay_errors=1 -derror_reporting=E_ALL -dlog_errrors=0 >/dev/null"
+    cmd="php -n -l -ddisplay_errors=1 -derror_reporting=E_ALL -dlog_errrors=0"
   elif [ "${ext}" = "pl" ] || [ "${she}" = "perl" ]; then
-    cmd="perl -wc - >/dev/null"
+    cmd="perl -wc -"
   fi
 
   if [ -n "${cmd}" ]; then
