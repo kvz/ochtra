@@ -13,7 +13,8 @@ git rev-parse --verify HEAD >/dev/null 2>&1 && against="HEAD"
 
 # Only run when we're on a branch (to avoid rebase hell)
 # http://git-blame.blogspot.nl/2013/06/checking-current-branch-programatically.html
-if branch=$(git symbolic-ref --short -q HEAD); then
+# --short is not supported on older git versions so using awk here
+if branch=$(git symbolic-ref -q HEAD |awk -F/ '{print $NF}'); then
   echo on branch $branch
 else
   echo not on any branch
