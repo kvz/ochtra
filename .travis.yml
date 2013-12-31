@@ -1,9 +1,8 @@
-language: c
+language: nodejs
 before_install:
  - sudo apt-get update -qq
- - sudo apt-get install -qq golang php5-cli ruby python nodejs
- - curl https://npmjs.org/install.sh | sudo sh
- - sudo npm install -g jshint
+ - sudo apt-get install -qq golang php5-cli ruby python pylint
+ - sudo npm install -g jshint coffeelint
  - git config --global user.email "travis@kvz.io"
  - git config --global user.name "Travis test user"
 script: make test
