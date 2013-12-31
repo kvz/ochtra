@@ -63,7 +63,7 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     cmd="coffeelint --stdin"
     out="red"
   elif [ "${ext}" = "py" ] || [ "${she}" = "python" ]; then
-    tmp="/tmp/${$}.${ext}"
+    tmp="${TMPDIR:-/tmp}/${$}.${ext}"
     cmd="pylint --errors-only ${tmp}"
     out="red"
   elif [ "${ext}" = "go" ]; then
