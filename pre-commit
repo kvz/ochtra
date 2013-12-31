@@ -21,7 +21,8 @@ else
 fi
 
 # Takes a command as arguments and paints both it's STDOUT & STDERR in
-# colors specified in first and second arguments
+# colors specified in first and second arguments. Use 'purge' to skip printing
+# at all
 function paint() (
   set -o pipefail;
 
@@ -48,6 +49,7 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   out="purge"
   err="red"
   cmd=""
+  tmp=""
 
   # Select linting tool based on extension or shebang
   if [ "${ext}" = "rb" ] || [ "${ext}" = "erb" ] || [ "${she}" = "ruby" ]; then
@@ -61,7 +63,9 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     cmd="coffeelint --stdin"
     out="red"
   elif [ "${ext}" = "py" ] || [ "${she}" = "python" ]; then
-    cmd="pylint -"
+    tmp="/tmp/${$}.${ext}"
+    cmd="pylint --errors-only ${tmp}"
+    out="red"
   elif [ "${ext}" = "go" ]; then
     cmd="gofmt -e"
   elif [ "${she}" = "bash" ]; then
@@ -89,10 +93,15 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   fi
 
   # execute on staged buffer
+  [ -n "${tmp}" ] && git cat-file -p ${sha} > "${tmp}"
+
   if ! git cat-file -p ${sha} |paint ${out} ${err} ${cmd}; then
     paint "red" "red" echo "Please fix ${tool} syntax errors and type 'git add ${pth}'"
+    [ -n "${tmp}" ] && rm -f "${tmp}"
     exit 1
   fi
+
+  [ -n "${tmp}" ] && rm -f "${tmp}"
 
   paint "green" "red" echo "No ${tool} syntax errors detected in '${pth}'"
 done
