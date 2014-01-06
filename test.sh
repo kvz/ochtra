@@ -43,11 +43,12 @@ mkdir -p "${TESTDIR}"
 pushd "${_}"
   git init
   cp -af "${__DIR__}/pre-commit" ".git/hooks/pre-commit" && chmod 755 "${_}"
-  for ext in go php js rb py bash sh pl coffee xml json; do
+  for ext in go php js rb py bash sh pl coffee xml json yaml; do
     failfile="syntax-fail.${ext}"
     okayfile="syntax-okay.${ext}"
 
-    echo -e "#!/bin/bash\n<?php;-)" > ${failfile}
+    bad="#!/bin/bash\n<?php;-)"
+    echo -e "${bad}" > ${failfile}
     git add ${failfile}
     if git commit -m "trying to commit a .${ext} with syntax errors"; then
       cat ${failfile}
@@ -64,7 +65,7 @@ pushd "${_}"
     else
       good=""
     fi
-    echo "${good}" > ${okayfile}
+    echo -e "${good}" > ${okayfile}
     git add ${okayfile}
     if ! git commit -m "trying to commit a .${ext} without syntax errors"; then
       cat ${okayfile}
