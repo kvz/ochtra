@@ -77,6 +77,8 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     cmd="php -n -l -ddisplay_errors=1 -derror_reporting=E_ALL -dlog_errrors=0"
   elif [ "${ext}" = "pl" ] || [ "${she}" = "perl" ]; then
     cmd="perl -wc -"
+  elif [ "${ext}" = "xml" ] || [ "${ext}" = "xsl" ] || [ "${ext}" = "xslt" ]; then
+    cmd="xmllint --noout -"
   fi
 
   if [ -n "${cmd}" ]; then
