@@ -19,7 +19,7 @@ And deals with some common pitfalls you'll find in other hooks:
  - Will skip files that are staged to be deleted
  - Will not run when we're not currently on a branch
  - Works on filenames with spaces
- - Checks files as staged in Git, not how they're currently happen to be saved in your working dir
+ - Checks files as staged in Git, not how they're currently saved in your working dir
  - Deals with discrepancies between linters sometimes printing errors on STDOUT vs STDERR
 
 ## Try it
