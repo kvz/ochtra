@@ -59,6 +59,8 @@ pushd "${_}"
 
     if [ "${ext}" = "xml" ]; then
       good="<xml><items></items></xml>"
+    elif [ "${ext}" = "json" ]; then
+      good='{"foo": "bar"}'
     else
       good=""
     fi
@@ -73,8 +75,6 @@ pushd "${_}"
     git rm --cached ${okayfile}
   done
 popd
-
-
 
 rm -rf "${TESTDIR}"
 okay "All tests passed : )"
