@@ -27,7 +27,7 @@ And deals with some common pitfalls you'll find in other hooks:
 Without installing anything, you can see `ochtra` in action on a local test repository:
 
 ```bash
-mkdir my-project && cd $_
+mkdir test-repo && cd $_
 git init
 echo ";-)" > syntax-error.go
 git add syntax-error.go
@@ -38,7 +38,7 @@ This will show that `syntax-error.go` has indeed, a syntax error.
 
 ## Install
 
-As of Git 1.7 you can install `ochtra` as a git template. This will make it present in all new repositories.
+As of Git 1.7 you can install `ochtra` as a git template.
 
 ```bash
 mkdir -p ~/.gittemplate/hooks
@@ -47,9 +47,12 @@ curl https://raw.github.com/kvz/ochtra/master/pre-commit -o ~/.gittemplate/hooks
 git config --global init.templatedir '~/.gittemplate'
 ```
 
+This will make it present in all newly create repositories.
+
 Now, to install in existing repositories you can type
 
 ```bash
+cd my-project
 rm .git/hooks/pre-commit
 git init # just copies any non-existing files from ~/.gittemplate to current repo
 ```
