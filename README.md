@@ -1,6 +1,6 @@
 # ochtra [![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
 
-Ochtra stands for
+ochtra stands for
 **O**ne
 **C**ommit
 **H**ook
