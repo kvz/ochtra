@@ -79,7 +79,7 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     cmd="perl -wc -"
   elif [ "${ext}" = "xml" ] || [ "${ext}" = "xsl" ] || [ "${ext}" = "xslt" ]; then
     cmd="xmllint --noout -"
-  elif [ "${ext}" = "json"]; then
+  elif [ "${ext}" = "json" ]; then
     cmd="jsonlint"
   fi
 
