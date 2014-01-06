@@ -82,7 +82,8 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   elif [ "${ext}" = "json" ]; then
     cmd="jsonlint"
   elif [ "${ext}" = "yaml" ] || [ "${ext}" = "yml" ]; then
-    cmd="js-yaml ${pth}"
+    tmp="${TMPDIR:-/tmp}/${$}.${ext}"
+    cmd="js-yaml ${tmp}"
   fi
 
   if [ -n "${cmd}" ]; then
