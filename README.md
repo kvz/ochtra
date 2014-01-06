@@ -1,11 +1,6 @@
-# ochtra [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
+# ochtra [![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
 
-[BuildStatusIMGURL]:        https://secure.travis-ci.org/kvz/ochtra.png?branch=master
-[BuildStatusURL]:           https://travis-ci.org/kvz/ochtra "Build Status"
-
-## Synopsis
-
-Ochtra stands for
+ochtra stands for
 **O**ne
 **C**ommit
 **H**ook
@@ -27,11 +22,9 @@ And deals with some common pitfalls you'll find in other hooks:
  - Checks files as staged in Git, not how they're currently happen to be saved in your working dir
  - Deals with discrepancies between linters sometimes printing errors on STDOUT vs STDERR
 
-[![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
+## Try it
 
-## Try
-
-Without installing anything, you can see `ochtra` in action on a local repository:
+Without installing anything, you can see `ochtra` in action on a local test repository:
 
 ```bash
 mkdir my-project && cd $_
@@ -40,6 +33,8 @@ echo ";-)" > syntax-error.go
 git add syntax-error.go
 curl -s https://raw.github.com/kvz/ochtra/master/pre-commit |bash
 ```
+
+This will show that `syntax-error.go` has indeed, a syntax error.
 
 ## Install
 
