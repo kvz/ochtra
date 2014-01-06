@@ -1,9 +1,4 @@
-# ochtra [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
-
-[BuildStatusIMGURL]:        https://secure.travis-ci.org/kvz/ochtra.png?branch=master
-[BuildStatusURL]:           https://travis-ci.org/kvz/ochtra "Build Status"
-
-## Synopsis
+# ochtra [![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
 
 Ochtra stands for
 **O**ne
@@ -27,7 +22,7 @@ And deals with some common pitfalls you'll find in other hooks:
  - Checks files as staged in Git, not how they're currently happen to be saved in your working dir
  - Deals with discrepancies between linters sometimes printing errors on STDOUT vs STDERR
 
-[![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
+
 
 ## Try
 
