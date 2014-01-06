@@ -1,4 +1,7 @@
-# Ochtra
+# ochtra [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
+
+[BuildStatusIMGURL]:        https://secure.travis-ci.org/kvz/ochtra.png?branch=master
+[BuildStatusURL]:           https://travis-ci.org/kvz/ochtra "Build Status"
 
 ## Synopsis
 
