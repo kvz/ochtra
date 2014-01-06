@@ -10,7 +10,7 @@ ochtra stands for
 and is an attempt at a definitive Git commit hook that:
 
  - Has a focus on keeping syntax errors out of your codebase, not being too opinionated about coding style
- - Works with many languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML)
+ - Works with many languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON)
  - Is globally installable for all repositories you work with
 
 And deals with some common pitfalls you'll find in other hooks:
@@ -68,6 +68,7 @@ Feel free to report issues, comment on [my blog](http://kvz.io/blog/2013/12/29/o
 
 Contributors so far:
 
+- [abtris](https://github.com/abtris) (JSON & XML support)
 - Stefan Näwe (reporting issue)
 - mihaeu (reporting issue)
 
