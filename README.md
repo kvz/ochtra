@@ -1,6 +1,6 @@
 # ochtra [![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
 
-`ochtra` stands for
+**ochtra** stands for
 **O**ne
 **C**ommit
 **H**ook
@@ -14,7 +14,7 @@ and is an attempt at creating the definitive Git commit hook that:
  - Aims to keep syntax errors from entering your codebase
  - Is not religous about coding style (you still can have your own custom `pre-ochtra` hook for that)
 
-`ochtra` deals with some common pitfalls you'll find in other hooks:
+**ochtra** deals with some common pitfalls you'll find in other hooks:
 
  - Works on initial commits
  - Will skip files that are staged to be deleted
@@ -26,7 +26,7 @@ and is an attempt at creating the definitive Git commit hook that:
 
 ## Try it now
 
-Without installing anything, you can see `ochtra` in action on a local test repository:
+Without installing anything, you can see **ochtra** in action on a local test repository:
 
 ```bash
 cd /tmp
@@ -45,11 +45,11 @@ You'll notice that ochtra won't let you commit that `syntax-error.go`:
 
 ![screen shot 2014-01-07 at 15 18 47](https://f.cloud.github.com/assets/26752/1859626/b1b5d4ac-77a6-11e3-9434-0d1485bfd13f.png)
 
-Phew : ) Now for `.go` files it won't typically be a huge problem as your Go project won't run with syntax errors in the first place. But what about making that quick documentation change and leaving a typo? What about that Bash file in your repository? `ochtra` has got you covered.
+Phew : ) Now for `.go` files it won't typically be a huge problem as your Go project won't run with syntax errors in the first place. But what about making that quick documentation change and leaving a typo? What about that Bash file in your repository? **ochtra** has got you covered.
 
 ## Install
 
-As of Git 1.7 you can install `ochtra` as a git template.
+As of Git 1.7 you can install **ochtra** as a git template.
 
 ```bash
 mkdir -p ~/.gittemplate/hooks
@@ -89,7 +89,7 @@ Contributors so far:
 ## Tips
 
 - If you already had a `pre-commit` hook that you want to preserve and have
-executed before `ochtra`, just rename it to `pre-ochtra`.
+executed before **ochtra**, just rename it to `pre-ochtra`.
 
 - If you ever want to commit code and disable the pre-commit one time, type
 
@@ -104,7 +104,7 @@ at the [.travis.yml](.travis.yml) file, it has instructions for all of them
 
 ## Thanks
 
-These pages have been a source of inspiration when building `ochtra`:
+These pages have been a source of inspiration when building **ochtra**:
 
 - <http://mark-story.com/posts/view/using-git-commit-hooks-to-prevent-stupid-mistakes>
 - <http://stackoverflow.com/a/8842663/151666>
