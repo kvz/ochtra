@@ -1,6 +1,6 @@
 # ochtra [![Build Status](https://travis-ci.org/kvz/ochtra.png?branch=master)](https://travis-ci.org/kvz/ochtra)
 
-ochtra stands for
+`ochtra` stands for
 **O**ne
 **C**ommit
 **H**ook
@@ -9,11 +9,12 @@ ochtra stands for
 **A**ll
 and is an attempt at creating the definitive Git commit hook that:
 
- - Has a focus on keeping syntax errors out of your codebase, not being too opinionated about coding style
- - Works with all common languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML)
- - Is globally installable for all repositories you work with
+ - Works on all your languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML)
+ - Is globally installable for all your repositories
+ - Aims to keep syntax errors from entering your codebase
+ - Is not religous about coding style (you still can have your own custom `pre-ochtra` hook for that)
 
-And deals with some common pitfalls you'll find in other hooks:
+`ochtra` deals with some common pitfalls you'll find in other hooks:
 
  - Works on initial commits
  - Will skip files that are staged to be deleted
@@ -23,19 +24,30 @@ And deals with some common pitfalls you'll find in other hooks:
  - Checks files as staged in Git, not how they're currently saved in your working dir
  - Deals with discrepancies between linters sometimes printing errors on STDOUT vs STDERR
 
-## Try it
+## Try it now
 
 Without installing anything, you can see `ochtra` in action on a local test repository:
 
 ```bash
 mkdir test-repo && cd $_
+
 git init
+curl -s https://raw.github.com/kvz/ochtra/master/pre-commit -ko .git/hooks/pre-commit && chmod u+x $_
+
 echo ";-)" > syntax-error.go
 git add syntax-error.go
-curl -s https://raw.github.com/kvz/ochtra/master/pre-commit |bash
+git commit
 ```
 
-This will show that `syntax-error.go` has indeed, a syntax error.
+You'll notice that ochtra won't let you commit that `syntax-error.go`:
+
+![screen shot 2014-01-07 at 15 18 47](https://f.cloud.github.com/assets/26752/1859626/b1b5d4ac-77a6-11e3-9434-0d1485bfd13f.png)
+
+Phew : )
+
+Now obviously for `.go` files it won't a big problem as your Go project won't even run with syntax errors in them. But what about making that final documentation change and leaving a typo? What about that Bash file in your repository?
+
+`ochtra` has got you covered.
 
 ## Install
 
