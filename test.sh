@@ -45,10 +45,17 @@ pushd "${_}"
   cp -af "${__DIR__}/pre-commit" ".git/hooks/pre-commit" && chmod 755 "${_}"
   for ext in go php js rb py bash sh pl coffee xml json yaml; do
     failfile="syntax-fail.${ext}"
+    failbuff="#!/bin/bash\n<?php;-)"
     okayfile="syntax-okay.${ext}"
+    okaybuff=""
+    if [ "${ext}" = "xml" ]; then
+      okaybuff="<xml><items></items></xml>"
+    elif [ "${ext}" = "json" ]; then
+      okaybuff='{"foo": "bar"}'
+    fi
 
-    bad="#!/bin/bash\n<?php;-)"
-    echo -e "${bad}" > ${failfile}
+    # Test failing syntax
+    echo -e "${failbuff}" > ${failfile}
     git add ${failfile}
     if git commit -m "trying to commit a .${ext} with syntax errors"; then
       cat ${failfile}
@@ -58,14 +65,8 @@ pushd "${_}"
     fi
     git rm --cached ${failfile}
 
-    if [ "${ext}" = "xml" ]; then
-      good="<xml><items></items></xml>"
-    elif [ "${ext}" = "json" ]; then
-      good='{"foo": "bar"}'
-    else
-      good=""
-    fi
-    echo -e "${good}" > ${okayfile}
+    # Test okay syntax
+    echo -e "${okaybuff}" > ${okayfile}
     git add ${okayfile}
     if ! git commit -m "trying to commit a .${ext} without syntax errors"; then
       cat ${okayfile}
