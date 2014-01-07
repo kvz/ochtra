@@ -29,10 +29,12 @@ and is an attempt at creating the definitive Git commit hook that:
 Without installing anything, you can see `ochtra` in action on a local test repository:
 
 ```bash
+cd /tmp
 mkdir test-repo && cd $_
 
 git init
-curl -s https://raw.github.com/kvz/ochtra/master/pre-commit -ko .git/hooks/pre-commit && chmod u+x $_
+curl -s https://raw.github.com/kvz/ochtra/master/pre-commit -ko .git/hooks/pre-commit \
+ && chmod u+x $_
 
 echo ";-)" > syntax-error.go
 git add syntax-error.go
@@ -43,11 +45,7 @@ You'll notice that ochtra won't let you commit that `syntax-error.go`:
 
 ![screen shot 2014-01-07 at 15 18 47](https://f.cloud.github.com/assets/26752/1859626/b1b5d4ac-77a6-11e3-9434-0d1485bfd13f.png)
 
-Phew : )
-
-Now obviously for `.go` files it won't a big problem as your Go project won't even run with syntax errors in them. But what about making that final documentation change and leaving a typo? What about that Bash file in your repository?
-
-`ochtra` has got you covered.
+Phew : ) Now for `.go` files it won't typically be a huge problem as your Go project won't run with syntax errors in the first place. But what about making that quick documentation change and leaving a typo? What about that Bash file in your repository? `ochtra` has got you covered.
 
 ## Install
 
@@ -62,7 +60,7 @@ git config --global init.templatedir '~/.gittemplate'
 
 This will make it present in all newly create repositories.
 
-Now, to install in existing repositories you can type
+Now, to install/update in existing repositories you can type
 
 ```bash
 cd my-project
@@ -72,7 +70,7 @@ git init # just copies any non-existing files from ~/.gittemplate to current rep
 
 ## Tests
 
-To run the (basic) tests:
+To run the tests:
 
 ```bash
 make test
