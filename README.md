@@ -7,7 +7,7 @@ ochtra stands for
 **T**o
 **R**ule
 **A**ll
-and is an attempt at creating a definitive Git commit hook that:
+and is an attempt at creating the definitive Git commit hook that:
 
  - Has a focus on keeping syntax errors out of your codebase, not being too opinionated about coding style
  - Works with all common languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML)
@@ -18,6 +18,7 @@ And deals with some common pitfalls you'll find in other hooks:
  - Works on initial commits
  - Will skip files that are staged to be deleted
  - Will not run when we're not currently on a branch
+ - Can co-exist with your current commit hook, just rename it to `pre-ochtra`
  - Works on filenames with spaces
  - Checks files as staged in Git, not how they're currently saved in your working dir
  - Deals with discrepancies between linters sometimes printing errors on STDOUT vs STDERR
