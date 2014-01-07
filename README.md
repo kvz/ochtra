@@ -77,6 +77,9 @@ Contributors so far:
 
 ## Tips
 
+- If you already had a `pre-commit` hook that you want to preserve and have
+executed before `ochtra`, just rename it to `pre-ochtra`.
+
 - If you ever want to commit code and disable the pre-commit one time, type
 
 ```bash

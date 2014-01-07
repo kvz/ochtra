@@ -2,8 +2,8 @@
 
 set -o pipefail
 set -o errexit
-# set -o xtrace
 set -o nounset
+# set -o xtrace
 
 __DIR__="$(cd "$(dirname "${0}")"; echo $(pwd))"
 __BASE__="$(basename "${0}")"
@@ -55,27 +55,63 @@ pushd "${_}"
     fi
 
     # Test failing syntax
+    action="commit a .${ext} with syntax errors"
     echo -e "${failbuff}" > ${failfile}
     git add ${failfile}
-    if git commit -m "trying to commit a .${ext} with syntax errors"; then
+    if git commit -m "trying to ${action}"; then
       cat ${failfile}
-      fail "Should not have been able to commit a .${ext} with syntax errors"
+      fail "Should not have been able to ${action}"
     else
-      okay "Tried to commit a .${ext} with syntax errors and failed"
+      okay "Tried to ${action} and failed"
     fi
     git rm --cached ${failfile}
+    rm ${failfile}
 
     # Test okay syntax
+    action="commit a .${ext} without syntax errors"
     echo -e "${okaybuff}" > ${okayfile}
     git add ${okayfile}
-    if ! git commit -m "trying to commit a .${ext} without syntax errors"; then
+    if ! git commit -m "trying to ${action}"; then
       cat ${okayfile}
-      fail "Should have been able to commit a .${ext} without syntax errors"
+      fail "Should have been able to ${action}"
     else
-      okay "Tried to commit a .${ext} without syntax errors and succeeded"
+      okay "Tried to ${action} and succeeded"
     fi
     git rm --cached ${okayfile}
+    rm ${okayfile}
   done
+
+  # failing pre-ochtra
+  action="commit with a failing pre-ochtra"
+  echo -e 'exit 1' > .git/hooks/pre-ochtra
+  chmod 755 .git/hooks/pre-ochtra
+  okayfile="syntax-okay-for-pre-ochtra.txt"
+  echo -e "foobar" > ${okayfile}
+  git add ${okayfile}
+  if git commit -m "trying to ${action}"; then
+    fail "Should not have been able to ${action}"
+  else
+    okay "Tried to ${action} and failed"
+  fi
+  git rm --cached ${okayfile}
+  rm ${okayfile}
+  rm .git/hooks/pre-ochtra
+
+  # succeeding pre-ochtra
+  action="commit with a succeeding pre-ochtra"
+  echo -e 'exit 0' > .git/hooks/pre-ochtra
+  chmod 755 .git/hooks/pre-ochtra
+  okayfile="syntax-okay-for-pre-ochtra.txt"
+  echo -e "foobar" > ${okayfile}
+  git add ${okayfile}
+  if ! git commit -m "trying to ${action}"; then
+    fail "Should have been able to ${action}"
+  else
+    okay "Tried to ${action} and succeeded"
+  fi
+  git rm --cached ${okayfile}
+  rm ${okayfile}
+  rm .git/hooks/pre-ochtra
 popd
 
 rm -rf "${TESTDIR}"
