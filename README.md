@@ -7,10 +7,10 @@ ochtra stands for
 **T**o
 **R**ule
 **A**ll
-and is an attempt at a definitive Git commit hook that:
+and is an attempt at creating a definitive Git commit hook that:
 
  - Has a focus on keeping syntax errors out of your codebase, not being too opinionated about coding style
- - Works with many languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML)
+ - Works with all common languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML)
  - Is globally installable for all repositories you work with
 
 And deals with some common pitfalls you'll find in other hooks:
