@@ -1,8 +1,7 @@
 # ochtra
 
 <!-- badges/ -->
-[![Build Status](https://secure.travis-ci.org/kvz/ochtra.png?branch=master)](http://travis-ci.org/kvz/ochtra "Check this project's build status on TravisCI")
-
+[![Build Status](https://secure.travis-ci.org/kvz/ochtra.png?branch=master)](http://travis-ci.org/kvz/ochtra "Check this project's build status on TravisCI") 
 [![Gittip donate button](http://img.shields.io/gittip/kvz.png)](https://www.gittip.com/kvz/ "Sponsor the development of ochtra via Gittip")
 [![Flattr donate button](http://img.shields.io/flattr/donate.png?color=yellow)](https://flattr.com/submit/auto?user_id=kvz&url=https://github.com/kvz/ochtra&title=ochtra&language=&tags=github&category=software "Sponsor the development of ochtra via Flattr")
 [![PayPayl donate button](http://img.shields.io/paypal/donate.png?color=yellow)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=kevin%40vanzonneveld%2enet&lc=NL&item_name=Open%20source%20donation%20to%20Kevin%20van%20Zonneveld&currency_code=USD&bn=PP-DonationsBF%3abtn_donate_SM%2egif%3aNonHosted "Sponsor the development of ochtra via Paypal")
