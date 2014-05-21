@@ -41,7 +41,7 @@ cd /tmp
 mkdir test-repo && cd $_
 
 git init
-curl -s https://raw.github.com/kvz/ochtra/master/pre-commit -ko .git/hooks/pre-commit \
+curl -s https://raw.githubusercontent.com/kvz/ochtra/master/pre-commit -ko .git/hooks/pre-commit \
  && chmod u+x $_
 
 echo ";-)" > syntax-error.go
@@ -61,7 +61,7 @@ As of Git 1.7 you can install ochtra as a git template.
 
 ```bash
 mkdir -p ~/.gittemplate/hooks
-curl https://raw.github.com/kvz/ochtra/master/pre-commit -o ~/.gittemplate/hooks/pre-commit \
+curl https://raw.githubusercontent.com/kvz/ochtra/master/pre-commit -o ~/.gittemplate/hooks/pre-commit \
  && chmod u+x $_
 git config --global init.templatedir '~/.gittemplate'
 ```
