@@ -90,7 +90,7 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   elif [ "${she}" = "sh" ]; then
     cmd="sh -n"
   elif [ "${ext}" = "php" ] || [ "${ext}" = "ctp" ] || [ "${she}" = "php" ]; then
-    cmd="php -n -l -ddisplay_errors=1 -derror_reporting=E_ALL -dlog_errrors=0"
+    cmd="php -n -l -ddisplay_errors=1 -derror_reporting=E_ALL -dlog_errors=0"
   elif [ "${ext}" = "pl" ] || [ "${she}" = "perl" ]; then
     cmd="perl -wc -"
   elif [ "${ext}" = "xml" ] || [ "${ext}" = "xsl" ] || [ "${ext}" = "xslt" ]; then
