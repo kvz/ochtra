@@ -76,6 +76,21 @@ rm .git/hooks/pre-commit
 git init # just copies any non-existing files from ~/.gittemplate to current repo
 ```
 
+## Uninstall
+
+To remove ochtra from one project, type
+
+```bash
+rm .git/hooks/pre-commit
+```
+
+To remove the automatic installer for new Git repos, type
+
+```bash
+git config --global --unset init.templatedir
+# git config --global --remove-section init
+```
+
 ## Tests
 
 To run the tests:
