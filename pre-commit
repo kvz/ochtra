@@ -57,7 +57,7 @@ fi
 
 # (A)dded (C)opied or (M)odified
 git diff-index --cached --full-index --diff-filter=ACM $against |while read -r line; do
-  mod="$(echo ${line} |cut -d' ' -f1)"
+  mod="$(echo ${line} |cut -d' ' -f2)"
   sha="$(echo ${line} |cut -d' ' -f4)"
   sts="$(echo ${line} |cut -d' ' -f5)"
   pth="$(echo ${line} |cut -d' ' -f6-)"
