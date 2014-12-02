@@ -93,6 +93,9 @@ Contributors so far:
 - [abtris](https://github.com/abtris) (YAML, JSON & XML support)
 - Stefan Näwe (reporting issue)
 - mihaeu (reporting issue)
+- [Mischa ter Smitten](https://github.com/tersmitten) (curl fix for githubusercontent when installing)
+- [Jan Dorsman](https://github.com/oldskool) (fix PHP error logging)
+- [qdx](https://github.com/qdx) (fix pipestatus & Git invalid object bug)
 
 ## Tips
 
