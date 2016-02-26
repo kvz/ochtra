@@ -43,7 +43,7 @@ mkdir -p "${TESTDIR}"
 pushd "${_}"
   git init
   cp -af "${__DIR__}/pre-commit" ".git/hooks/pre-commit" && chmod 755 "${_}"
-  for ext in go php js rb py bash sh pl coffee xml json yaml; do
+  for ext in go php js es6 rb py bash sh pl coffee xml json yaml; do
     failfile="syntax-fail.${ext}"
     failbuff="#!/bin/bash\n<?php;-)"
     okayfile="syntax-okay.${ext}"

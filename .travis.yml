@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "0.8"
+  - "node"
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq golang php5-cli ruby python pylint
  - npm install -g npm@1.4
- - npm install -g jshint coffeelint jsonlint js-yaml
+ - npm install -g jshint coffeelint jsonlint js-yaml eslint
  - git config --global user.email "travis@kvz.io"
  - git config --global user.name "Travis test user"
 script: make test
