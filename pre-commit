@@ -87,6 +87,9 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     # or use global without .eslintrc
     cmd="eslint --stdin --no-eslintrc"
     out="red"
+  elif [ "${ext}" = "ts" ] ; then
+    tmp="${TMPDIR:-/tmp}/${$}.${ext}"
+    cmd="tslint ${tmp}"
   elif [ "${ext}" = "coffee" ] || [ "${she}" = "coffee" ]; then
     # coffeelint unfortunately uses STDOUT for errors, so paint all red
     cmd="coffeelint --quiet --stdin"
