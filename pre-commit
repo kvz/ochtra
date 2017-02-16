@@ -100,8 +100,6 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     out="red"
   elif [ "${ext}" = "go" ]; then
     cmd="gofmt -e"
-  elif [ "${she}" = "bash" ]; then
-    cmd="bash -n"
   elif [ "${she}" = "sh" ]; then
     cmd="sh -n"
   elif [ "${ext}" = "php" ] || [ "${ext}" = "ctp" ] || [ "${she}" = "php" ]; then
@@ -115,6 +113,8 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   elif [ "${ext}" = "yaml" ] || [ "${ext}" = "yml" ]; then
     tmp="${TMPDIR:-/tmp}/${$}.${ext}"
     cmd="js-yaml ${tmp}"
+  elif [ "${she}" = "bash" ]; then
+    cmd="bash -n"
   fi
 
   if [ -n "${cmd}" ]; then
