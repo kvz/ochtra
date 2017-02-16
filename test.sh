@@ -45,7 +45,7 @@ pushd "${_}"
   cp -af "${__DIR__}/pre-commit" ".git/hooks/pre-commit" && chmod 755 "${_}"
   for ext in go php js es6 rb py bash sh pl coffee xml json yaml; do
     failfile="syntax-fail.${ext}"
-    failbuff="#!/bin/bash\n<?php;-)"
+    failbuff="#!/bin/bash\n<?php;-): -"
     okayfile="syntax-okay.${ext}"
     okaybuff=""
     if [ "${ext}" = "xml" ]; then
