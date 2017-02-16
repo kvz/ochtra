@@ -57,12 +57,17 @@ fi
 
 # (A)dded (C)opied or (M)odified
 git diff-index --cached --full-index --diff-filter=ACM $against |while read -r line; do
+  mod="$(echo ${line} |cut -d' ' -f2)"
   sha="$(echo ${line} |cut -d' ' -f4)"
   sts="$(echo ${line} |cut -d' ' -f5)"
   pth="$(echo ${line} |cut -d' ' -f6-)"
   ext="${pth##*.}"
 
-  she="$(git cat-file -p ${sha} |head -n1 |awk -F/ '/^#\!/ {print $NF}' |sed 's/^env //g')"
+  she=""
+  # only check shebang on normal and executable files
+  if [ "${mod}" = "100644" ] || [ "${mod}" = "100664" ] || [ "${mod}" = "100455" ]; then
+    she="$(head -n1 ${pth} |awk -F/ '/^#\!/ {print $NF}' |sed 's/^env //g')"
+  fi
   out="purge"
   err="red"
   cmd=""
@@ -75,6 +80,16 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
     # jshint unfortunately uses STDOUT for errors, so paint all red
     cmd="jshint -"
     out="red"
+  elif [ "${ext}" = "es6" ] || [ "${she}" = "node" ]; then
+    # eslint need to be in localfolder, for example using npm install peasant
+    # if use global installed eslint not works with .eslintrc
+    # cmd="node_modules/.bin/eslint --stdin"
+    # or use global without .eslintrc
+    cmd="eslint --stdin --no-eslintrc"
+    out="red"
+  elif [ "${ext}" = "ts" ] ; then
+    tmp="${TMPDIR:-/tmp}/${$}.${ext}"
+    cmd="tslint ${tmp}"
   elif [ "${ext}" = "coffee" ] || [ "${she}" = "coffee" ]; then
     # coffeelint unfortunately uses STDOUT for errors, so paint all red
     cmd="coffeelint --quiet --stdin"
