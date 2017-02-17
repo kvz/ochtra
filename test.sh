@@ -54,6 +54,8 @@ pushd "${_}"
       okaybuff='{"foo": "bar"}'
     elif [ "${ext}" = "html" ]; then
       okaybuff="<!doctype html>"
+    elif [ "${ext}" = "go" ]; then
+      okaybuff='package main'
     fi
 
     # Test failing syntax
