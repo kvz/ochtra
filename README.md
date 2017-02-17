@@ -110,6 +110,7 @@ Contributors so far:
 - mihaeu (reporting issue)
 - [Mischa ter Smitten](https://github.com/tersmitten) (curl fix for githubusercontent when installing)
 - [Jan Dorsman](https://github.com/oldskool) (fix PHP error logging)
+- [Jostein Kjønigsen](https://github.com/josteink) (TypeScript support)
 - [qdx](https://github.com/qdx) (fix pipestatus & Git invalid object bug)
 
 ## Tips
