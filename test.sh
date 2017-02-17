@@ -52,6 +52,8 @@ pushd "${_}"
       okaybuff="<xml><items></items></xml>"
     elif [ "${ext}" = "json" ]; then
       okaybuff='{"foo": "bar"}'
+    elif [ "${ext}" = "go" ]; then
+      okaybuff='package main'
     fi
 
     # Test failing syntax
