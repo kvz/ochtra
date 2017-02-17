@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # A Git pre-commit hook that checks for syntax errors
-# for: Ruby, JavaScript, Python, Bash, Go, and (Cake)PHP
+# for: Ruby, JavaScript, Python, Bash, Go, (Cake)PHP, and HTML
 # based on the extensions of staged files in Git.
 # Can be 'installed globally' as of Git 1.7.1 using init.templatedir
 #
@@ -113,6 +113,9 @@ git diff-index --cached --full-index --diff-filter=ACM $against |while read -r l
   elif [ "${ext}" = "yaml" ] || [ "${ext}" = "yml" ]; then
     tmp="${TMPDIR:-/tmp}/${$}.${ext}"
     cmd="js-yaml ${tmp}"
+  elif [ "${ext}" = "html" ] || [ "${ext}" = "htm" ] || [ "${ext}" = "shtml" ]; then
+    cmd="htmlhint stdin"
+    out="red"
   elif [ "${she}" = "bash" ]; then
     cmd="bash -n"
   fi
