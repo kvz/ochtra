@@ -1,7 +1,8 @@
 # ochtra
 
 <!-- badges/ -->
-[![Build Status](https://secure.travis-ci.org/kvz/ochtra.png?branch=master)](http://travis-ci.org/kvz/ochtra "Check this project's build status on TravisCI") 
+[![Build Status](https://secure.travis-ci.org/kvz/ochtra.png?branch=master)](http://travis-ci.org/kvz/ochtra "Check this project's build status on TravisCI") [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkvz%2Fochtra.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkvz%2Fochtra?ref=badge_shield)
+
 <!-- /badges -->
 
 ochtra stands for
@@ -137,3 +138,6 @@ These pages have been a source of inspiration when building ochtra:
 ## License
 
 [MIT Licensed](LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkvz%2Fochtra.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkvz%2Fochtra?ref=badge_large)
