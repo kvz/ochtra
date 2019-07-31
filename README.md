@@ -13,7 +13,8 @@ ochtra stands for
 **A**ll
 and is an attempt at creating the definitive Git commit hook that:
 
- - Works on all your languages (for now Ruby, JavaScript, Python, Bash, Dash, Go, PHP, XML, JSON, YAML, HTML)
+ - Works on all your languages (for now Ruby, JavaScript, TypeScript,
+   CoffeeScript, Python, Sh, Bash, Dash, Go, Perl, PHP, XML, JSON, YAML, HTML)
  - Is globally installable for all your repositories
  - Aims to keep syntax errors from entering your codebase
  - Is not religous about coding style (you still can have your own custom `pre-ochtra` hook for that)
